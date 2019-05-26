@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.login-card {
+    padding: 30px;
+    width: 30%;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+}
+
+.required-text {
+    display: none;
+    color: red;
+    font-size: 13px;
+}
+
+.invalid {
+    display: none;
+    color: red;
+}

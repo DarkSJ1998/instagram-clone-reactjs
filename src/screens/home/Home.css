@@ -1,0 +1,116 @@
+.main-container {
+    margin: 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0px;
+    padding: 0px;
+    height: 90vh;
+    overflow: auto;
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Calibri';
+}
+
+.post-header {
+    background-color: dodgerblue;
+    width: 90%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post-pp {
+    border-radius: 100%;
+    border: 1px solid red;
+    height: 40px;
+    margin: 0px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.title-box {
+    height: 70px;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    float: left;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.title-username {
+    font-weight: 700;
+    margin: 0px;
+}
+
+.title-date {
+    color: #787878;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.post-content {
+    background-color: pink;
+    width: 90%;
+}
+
+.img-container {
+    width: 100%;
+    text-align: center;
+}
+
+.img-container img {
+    width: 95%;
+}
+
+.caption-container {
+    padding: 5px 0px;
+}
+
+.tag {
+    color: #366089;
+    cursor: pointer;
+}
+
+.like-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+}
+
+.like-btn {
+    cursor: pointer;
+    margin: 2px;
+}
+
+.comments-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.comment-box {
+    height: 50px;
+    width: 90%;
+    border: 1px solid white;
+}
+
+.comments-container Button {
+    margin: 0px 10px 0px 10px;
+}
