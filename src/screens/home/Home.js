@@ -13,13 +13,15 @@ class Home extends Component {
             object1: null,
             object2: null,
             client_id: '32c1d219b1fd474bb51342773597a80a',
-            access_token: '6410902345.32c1d21.63725367298c4a1084bf2d0d898858c8',
-            access_token2: '8661035776.d0fcd39.87fd934e04f84253aaf234d8bd4e4c65'
+            access_token: sessionStorage.getItem('access_token'),        // Getting the access_token from the sessionStorage
+            allComments: []
         }
     }
 
     render() {
-        // console.log(this.state.object2);
+        console.log("==> Home.render() called");
+        console.log(this.state.allComments);
+        console.log(this.allComments);
         return (
             <div className="main-container">
 
@@ -51,8 +53,7 @@ class Home extends Component {
         console.log(object1);
         console.log(object2);
 
-        // this.setState({profile_picture: object1.data.profile_picture});
-        this.setState({object1: object1, object2: object2});
+        this.setState({object1: object1, object2: object2, profile_picture: object1.data.profile_picture});
     }
 
     getSearchValue = (val) => {
@@ -111,12 +112,29 @@ class Home extends Component {
 
                         <div className="comments-container">
                             <div id={"comment-box="+item.id}>
-                            {console.log(this.state)}
-                            {
-                                this.state['cmt='+item.id]
-                                ? this.state['cmt='+item.id].map(this.printComment)
-                                : null
-                            }
+                                {console.log(this.state)}
+                                {
+                                    this.state['cmt='+item.id]
+                                    ? this.state['cmt='+item.id].map(this.printComment)
+                                    : null
+                                }
+                                I'm a comment box.
+                                {
+                                    this.state.allComments.map( (comment) => {
+                                        console.log("MAP CALLED FOR");
+                                        console.log(comment.comment_item_id);
+                                        console.log(item_id);
+                                        if(comment.comment_item_id === this.item_id) {
+                                            return (
+                                                <div className="comment">
+                                                    <p className="poster">{comment.poster}</p>
+                                                    <p className="comment-text">{comment.text}</p>
+                                                </div>
+                                            );
+                                        } else
+                                            return null;
+                                    } )
+                                }
                             </div>
 
                             <FormControl className="comment-box">
@@ -184,37 +202,28 @@ class Home extends Component {
         var item_id = e.target.id.substring(12,e.target.id.length+1);
         // console.log(item_id);
 
-        var comment_box = document.getElementById("comment-box="+item_id);
+        // var comment_box = document.getElementById("comment-box="+item_id);
         // console.log(comment_box);
 
-        var x = 'cmt='+item_id;
-        if(this.state[x] === undefined) {
-            this.state = {
-                x: []
-            };
-        }
+        var arr = this.state.allComments;
 
-        var arr = this.state[""+x];
-
-        if(this.state.object1) {
-            arr.push({
-                poster: this.state.object1.data.username,
-                text: this.comment_text
-            });
-        }
-
-        this.setState({x: arr});
+        var comment = {
+            poster: this.state.object1.data.username,
+            text: this.comment_text,
+            comment_item_id: item_id
+        };
+        arr.push(comment);
+        console.log(comment);
         console.log(arr);
+
+        this.allComments = arr;
+        this.forceUpdate();
+
+        this.setState({
+            allComments: arr
+        });
     }
 
-    printComment = (item) => {
-        return (
-            <div className="comment">
-                <p className="poster">{item.poster}</p>
-                <p className="comment-text">{item.text}</p>
-            </div>
-        );
-    }
 }
 
 export default Home;
