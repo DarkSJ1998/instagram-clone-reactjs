@@ -4,10 +4,6 @@ import { IconButton, Input, InputAdornment } from '@material-ui/core';
 
 class Header extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         console.log("==> Header.render() called");
 

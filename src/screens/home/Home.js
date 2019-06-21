@@ -21,7 +21,6 @@ class Home extends Component {
     render() {
         console.log("==> Home.render() called");
         console.log(this.state.allComments);
-        console.log(this.allComments);
         return (
             <div className="main-container">
 
@@ -111,38 +110,20 @@ class Home extends Component {
                         </div>
 
                         <div className="comments-container">
-                            <div id={"comment-box="+item.id}>
-                                {console.log(this.state)}
+                            <div id={"comment-box="+item.id} className="comment-box">
                                 {
-                                    this.state['cmt='+item.id]
-                                    ? this.state['cmt='+item.id].map(this.printComment)
-                                    : null
-                                }
-                                I'm a comment box.
-                                {
-                                    this.state.allComments.map( (comment) => {
-                                        console.log("MAP CALLED FOR");
-                                        console.log(comment.comment_item_id);
-                                        console.log(item_id);
-                                        if(comment.comment_item_id === this.item_id) {
-                                            return (
-                                                <div className="comment">
-                                                    <p className="poster">{comment.poster}</p>
-                                                    <p className="comment-text">{comment.text}</p>
-                                                </div>
-                                            );
-                                        } else
-                                            return null;
-                                    } )
+                                    this.state.allComments.map( this.printComment, item.id )
                                 }
                             </div>
 
-                            <FormControl className="comment-box">
-                                <InputLabel>Add a comment</InputLabel>
-                                <Input onChange={this.saveCommentText}/>
-                            </FormControl>
+                            <div className="add-comment">
+                                <FormControl>
+                                    <InputLabel>Add a comment</InputLabel>
+                                    <Input onChange={this.saveCommentText} className="comment-input"/>
+                                </FormControl>
 
-                            <Button type="button" id={"comment-btn="+item.id} onClick={this.addComment} variant="contained" color="primary" className="comment-btn">ADD</Button>
+                                <Button type="button" id={"comment-btn="+item.id} onClick={this.addComment} variant="contained" color="primary" className="comment-btn">ADD</Button>
+                            </div>
                         </div>
                     </CardContent>
 
@@ -200,7 +181,7 @@ class Home extends Component {
     addComment = (e) => {
         console.log(e.target);
         var item_id = e.target.id.substring(12,e.target.id.length+1);
-        // console.log(item_id);
+        console.log(item_id);
 
         // var comment_box = document.getElementById("comment-box="+item_id);
         // console.log(comment_box);
@@ -208,22 +189,34 @@ class Home extends Component {
         var arr = this.state.allComments;
 
         var comment = {
+            comment_item_id: item_id,
             poster: this.state.object1.data.username,
-            text: this.comment_text,
-            comment_item_id: item_id
+            text: this.comment_text
         };
         arr.push(comment);
         console.log(comment);
         console.log(arr);
-
-        this.allComments = arr;
-        this.forceUpdate();
 
         this.setState({
             allComments: arr
         });
     }
 
+    // This function is not an arrow function because I needed to use the parameter that I sent to the mapped function
+    printComment(item) {
+        // console.log("MAP CALLED FOR");
+        // console.log(item.comment_item_id);
+        // console.log(this);
+        if(item.comment_item_id === this) {
+            return (
+                <div className="comment">
+                    <p className="poster">{item.poster}: </p>
+                    <p className="comment-text">{item.text}</p>
+                </div>
+            );
+        } else
+            return null;
+    }
 }
 
 export default Home;

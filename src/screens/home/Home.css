@@ -101,16 +101,36 @@
 
 .comments-container {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: baseline;
+    border: 2px solid white;
 }
 
 .comment-box {
-    height: 50px;
-    width: 90%;
-    border: 1px solid white;
+    background-color: teal;
+}
+.comment {
+    display: flex;
+    background-color: antiquewhite;
+    border: 0.5px dotted black;
+    font-size: 14px;
+}
+.poster {
+    font-weight: 900;
+}
+.comment-text {
+    margin-left: 10px;
 }
 
-.comments-container Button {
-    margin: 0px 10px 0px 10px;
+.add-comment {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+.comment-input {
+    border: 5px springgreen;
+}
+.add-comment Button {
+    margin: 0px 10px -5px 10px;
 }
