@@ -16,6 +16,9 @@
     margin: 20px;
     padding: 20px;
 }
+a:link, a:visited {
+    text-decoration: none;
+}
 
 .right-contents {
     display: flex;
@@ -42,4 +45,39 @@
     border: 2px solid white;
     border-radius: 100%;
     width: 50px;
+}
+
+.dropdown {
+    flex-direction: column;
+    position: fixed;
+    top: 9%;
+    left: 92%;
+    /* border: 1px dotted black; */
+    border-radius: 10px;
+    background-color: #DFDFDF;
+    box-shadow: 2px 2px 10px black;
+    padding: 10px;
+    color: black;
+}
+.dropdown-visible {
+    display: flex;
+}
+.dropdown-hidden {
+    display: none;
+}
+.dropdown hr {
+    width: 100%;
+    color: grey;
+}
+.dropdown span {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+.dropdown span:hover {
+    background-color: rgba(0,0,0,0.1)
+}
+.dropdown a:link, a:visited {
+    color: black;
+    text-decoration: none;
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "./Login.css";
+import LoadingSVG from '../../assets/Rolling-1s-200px.svg';
 
 import Header from '../../common/header/Header';
 import Card from '@material-ui/core/Card';
@@ -46,9 +47,18 @@ class Login extends Component {
                                 <br/>
                                 <span className="invalid">Incorrect username and/or password</span>
                                 <br/>
-                                <Button type="button" onClick={this.validate} variant="contained" color="primary">
-                                    LOGIN
-                                </Button>
+                                <span style={{
+                                    display: 'flex'
+                                }}>
+                                    <Button type="button" onClick={this.validate} variant="contained" color="primary">
+                                        LOGIN
+                                    </Button>
+                                    <img src={LoadingSVG} alt="loading-spinner" style={{
+                                            width: '25px',
+                                            marginLeft: '10px',
+                                            display: 'none'
+                                    }} id="loading-spinner"/>
+                                </span>
                             </form>
                         </CardContent>
                     </Card>
@@ -88,8 +98,8 @@ class Login extends Component {
         } else {
             
             if(this.username === this.validUsername && this.password === this.validPassword) {
-                alert('Login successful');
 
+                document.getElementById("loading-spinner").style.display = '';
                 // Setting the access_token in the sessionStorage
                 sessionStorage.setItem('access_token', '6410902345.32c1d21.63725367298c4a1084bf2d0d898858c8');
                 

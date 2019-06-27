@@ -1,0 +1,103 @@
+.main-container {
+    margin: 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0px;
+    padding: 0px;
+    height: 90vh;
+    overflow: auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+}
+
+.user-profile-photo {
+    width: 30%;
+    text-align: center;
+    margin-right: 5%;
+}
+.user-profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+.data {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.counts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.user-full-name {
+    margin-right: 10px;
+}
+.bio {
+    text-align: left;
+}
+.website {
+    color: #366089;
+    cursor: pointer;
+}
+
+.grid-container {
+    width: 70%;
+    margin: 2% 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: orange;
+}
+.grid-item {
+    cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.7);
+}
+.modal-container {
+    padding: 10px;
+    width: 70%;
+    max-height: 70vh;
+    overflow: auto;
+    background-color:white;
+    display: flex;
+}
+.modal-left-container {
+    width: 50%;
+    padding: 5px;
+}
+.modal-left-container img {
+    width: 100%;
+}
+.modal-right-container {
+    width: 50%;
+    padding: 5px;
+}
+.modal-header {
+
+}
+.avatar img {
+    border-radius: 100%;
+    height: 5vh;
+    padding: 0px;
+}
