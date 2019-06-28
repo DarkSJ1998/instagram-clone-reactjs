@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import { Input, InputLabel } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -20,51 +21,58 @@ class Login extends Component {
 
     render() {
         console.log("==> Login.render() called");
-        return (
-            <div>
-                <Header searchBar={false}/>
 
-                <div className="container">
-                    <Card className="login-card">
-                        <CardContent>
-                            <Typography variant="h5">
-                                LOGIN
-                            </Typography>
-                            <br/>
-                            <form id="loginForm">
+        if(sessionStorage.getItem('access_token') !== null) {       // if the user is logged in and trying to open '/' directly
+            
+            alert('You will be redirected to the home page shortly.');
+            return <Redirect to='/home'/>;
+        } else {
+            return (
+                <div>
+                    <Header searchBar={false} calledFrom="Login"/>
 
-                                <FormControl className="input">
-                                    <InputLabel required>Username</InputLabel>
-                                    <Input type="text" id="uname" name="uname" ref="uname" onChange={this.checkInput1} />
-                                    <span className="required-text">required</span>
-                                </FormControl>
+                    <div className="container">
+                        <Card className="login-card">
+                            <CardContent>
+                                <Typography variant="h5">
+                                    LOGIN
+                                </Typography>
                                 <br/>
-                                <FormControl className="input">
-                                    <InputLabel required>Password</InputLabel>
-                                    <Input type="password" id="pwd" name="pwd" ref="pwd" onChange={this.checkInput2} />
-                                    <span className="required-text">required</span>
-                                </FormControl>
-                                <br/>
-                                <span className="invalid">Incorrect username and/or password</span>
-                                <br/>
-                                <span style={{
-                                    display: 'flex'
-                                }}>
-                                    <Button type="button" onClick={this.validate} variant="contained" color="primary">
-                                        LOGIN
-                                    </Button>
-                                    <img src={LoadingSVG} alt="loading-spinner" style={{
-                                            width: '25px',
-                                            marginLeft: '10px',
-                                            display: 'none'
-                                    }} id="loading-spinner"/>
-                                </span>
-                            </form>
-                        </CardContent>
-                    </Card>
+                                <form id="loginForm">
+
+                                    <FormControl className="input">
+                                        <InputLabel required>Username</InputLabel>
+                                        <Input type="text" id="uname" name="uname" ref="uname" onChange={this.checkInput1} />
+                                        <span className="required-text">required</span>
+                                    </FormControl>
+                                    <br/>
+                                    <FormControl className="input">
+                                        <InputLabel required>Password</InputLabel>
+                                        <Input type="password" id="pwd" name="pwd" ref="pwd" onChange={this.checkInput2} />
+                                        <span className="required-text">required</span>
+                                    </FormControl>
+                                    <br/>
+                                    <span className="invalid">Incorrect username and/or password</span>
+                                    <br/>
+                                    <span style={{
+                                        display: 'flex'
+                                    }}>
+                                        <Button type="button" onClick={this.validate} variant="contained" color="primary">
+                                            LOGIN
+                                        </Button>
+                                        <img src={LoadingSVG} alt="loading-spinner" style={{
+                                                width: '25px',
+                                                marginLeft: '10px',
+                                                display: 'none'
+                                        }} id="loading-spinner"/>
+                                    </span>
+                                </form>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 
     checkInput1 = (e) => {

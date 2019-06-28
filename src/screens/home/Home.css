@@ -21,14 +21,13 @@
     align-items: center;
     width: 40%;
     margin: 10px;
-    padding: 10px;
+    padding: 5px;
     font-family: 'Calibri';
 }
 
 .post-header {
-    background-color: dodgerblue;
     width: 90%;
-    height: 70px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -37,20 +36,17 @@
 
 .post-pp {
     border-radius: 100%;
-    border: 1px solid red;
     height: 40px;
-    background-color: rgba(255,255,255,0.5);
 }
 
 .title-box {
-    height: 70px;
+    height: 60px;
     margin: 10px 0px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     float: left;
-    background-color: rgba(255,255,255,0.5);
 }
 
 .title-username {
@@ -61,11 +57,11 @@
 .title-date {
     color: #787878;
     font-size: 12px;
+    font-weight: 600;
     margin: 0px;
 }
 
 .post-content {
-    background-color: pink;
     width: 90%;
 }
 
@@ -75,7 +71,7 @@
 }
 
 .img-container img {
-    width: 95%;
+    width: 100%;
 }
 
 .caption-container {
@@ -105,14 +101,13 @@
     border: 2px solid white;
 }
 
-.comment-box {
-    background-color: teal;
+.comment-box-homepage {
+    height: 13vh;
+    overflow: auto;
 }
 .comment {
-    display: flex;
-    background-color: antiquewhite;
-    border: 0.5px dotted black;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 10px 0px;
 }
 .poster {
     font-weight: 900;
@@ -124,12 +119,8 @@
 .add-comment {
     display: flex;
     flex-direction: row;
-    width: 100%;
     align-items: center;
     justify-content: center;
-}
-.comment-input {
-    border: 5px springgreen;
 }
 .add-comment Button {
     margin: 0px 10px -5px 10px;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
 import Header from '../../common/header/Header';
-import { Card, CardContent, CardHeader, IconButton, Input, Button, InputLabel, FormControl } from '@material-ui/core';
+import { Card, CardContent, CardHeader, Input, Button, InputLabel, FormControl } from '@material-ui/core';
 import {Redirect} from 'react-router-dom';
 
 class Home extends Component {
@@ -59,20 +59,22 @@ class Home extends Component {
             const res2 = await fetch(url2);
             const object2 = await res2.json();
 
-            // console.log(object1);
-            // console.log(object2);
+            console.log(object1);
+            console.log(object2);
 
             this.setState({object1: object1, object2: object2, profile_picture: object1.data.profile_picture});
         }
     }
 
     getSearchValue = (val) => {
-        this.setState({searchValue: val});
+        // Setting search value as case insensitive
+        this.setState({searchValue: val.toLowerCase()});
     }
 
     getPosts = (item) => {
-
-        if(item.caption && (item.caption.text.indexOf(this.state.searchValue) !== -1 || this.state.searchValue === '')) {
+        
+        if((item.caption == null && this.state.searchValue === '') ||
+            (item.caption && (item.caption.text.toLowerCase().indexOf(this.state.searchValue) !== -1 || this.state.searchValue === ''))) {
 
             var d = new Date(item.created_time * 1000);         // converting unix_timestamp to milliseconds
             var date = d.toLocaleDateString();
@@ -82,12 +84,12 @@ class Home extends Component {
                 <Card key={item.id} className="post-card">
                     <CardHeader
                         avatar={
-                        <IconButton><img src={item.user.profile_picture} alt={item.user.username} className="post-pp"/></IconButton>
+                        <a href="/home"><img src={item.user.profile_picture} alt={item.user.username} className="post-pp"/></a>
                         }
                         title={
                             <div className="title-box">
-                                <p className="title-username">{item.user.username}</p>
-                                <p className="title-date">{date + " " + time}</p>
+                                <a href="/home"><span className="title-username">{item.user.username}</span></a>
+                                <span className="title-date">{date + " " + time}</span>
                             </div>
                         }
                         subheader={
@@ -121,7 +123,7 @@ class Home extends Component {
                         </div>
 
                         <div className="comments-container">
-                            <div id={"comment-box="+item.id} className="comment-box">
+                            <div id={"comment-box="+item.id} className="comment-box-homepage">
                                 {
                                     this.state.allComments.map( this.printComment, item.id )
                                 }
@@ -130,7 +132,7 @@ class Home extends Component {
                             <div className="add-comment">
                                 <FormControl fullWidth>
                                     <InputLabel>Add a comment</InputLabel>
-                                    <Input onChange={this.saveCommentText} className="comment-input" id={"add-comment="+item.id}/>
+                                    <Input onChange={this.saveCommentText} id={"add-comment="+item.id}/>
                                 </FormControl>
 
                                 <Button type="button" id={"comment-btn="+item.id} onClick={this.addComment} variant="contained" color="primary" className="comment-btn">ADD</Button>
@@ -225,8 +227,8 @@ class Home extends Component {
         if(item.comment_item_id === this) {
             return (
                 <div className="comment" key={"commentid="+Math.random()}>
-                    <p className="poster">{item.poster}: </p>
-                    <p className="comment-text">{item.text}</p>
+                    <span className="poster">{item.poster}: </span>
+                    <span className="comment-text">{item.text}</span>
                 </div>
             );
         } else
