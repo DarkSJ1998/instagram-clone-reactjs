@@ -113,6 +113,9 @@
 .modal-right-container {
     width: 50%;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .modal-header {
     padding: 0px;
