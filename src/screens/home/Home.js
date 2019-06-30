@@ -149,7 +149,7 @@ class Home extends Component {
                                 </FormControl>
 
                                 <Button type="button" id={"comment-btn="+item.id} onClick={this.addComment} variant="contained"
-                                    color="primary" className="comment-btn">ADD</Button>
+                                    color="primary" className="comment-btn"><span id={"cmbtn-label="+item.id}>ADD</span></Button>
                             </div>
 
                         </div>
