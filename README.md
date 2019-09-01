@@ -1,5 +1,8 @@
 # instagram-clone-reactjs
 
+Instagram Clone / ImageViewer is a web application created using React JS. It uses official Instagram Developer API to get user information as well as the images posted by the user. It also has the functionality of displaying account info, liking a post, commenting on a post, etc.
+
+## Create React App Documentation
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
